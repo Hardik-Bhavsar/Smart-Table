@@ -44,14 +44,25 @@ angular.module("partials/selectionCheckbox.html", []).run(["$templateCache", fun
 
 angular.module("partials/smartTable.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("partials/smartTable.html",
-    "<table class=\"smart-table\">\n" +
+    "<div ng-class=\"{'smartTableContainer':isfixedHeader}\">\n" +
+    "	<table class=\"smart-table\" cellspacing=\"0\">\n" +
     "    <thead>\n" +
     "    <tr class=\"smart-table-global-search-row\" ng-show=\"isGlobalSearchActivated\">\n" +
     "        <td class=\"smart-table-global-search\" column-span=\"{{columns.length}}\" colspan=\"{{columnSpan}}\">\n" +
     "        </td>\n" +
     "    </tr>\n" +
+    "		<thead>\n" +
+    "	</table>\n" +
+    "	<div class=\"fixed-table-container\" ng-style=\"{height:height,overflow:'auto'}\">\n" +
+    "		<div class=\"header-background\"> </div>\n" +
+    "		<div class=\"fixed-table-container-inner extrawrap\">\n" +
+    "			<table class=\"smart-table\" cellspacing=\"0\">\n" +
+    "					<thead>\n" +
     "    <tr class=\"smart-table-header-row\">\n" +
-    "        <th ng-repeat=\"column in columns\" scope=\"col\" class=\"smart-table-header-cell {{column.headerClass}}\" ng-class=\"{'sort-ascent':column.reverse==true, 'sort-descent':column.reverse==false}\">{{column.label}}</th>\n" +
+    "							<th ng-repeat=\"column in columns\" scope=\"col\" class=\"smart-table-header-cell {{column.headerClass}}\" ><div ng-class=\"{'sort-ascent':column.reverse==true, 'sort-descent':column.reverse==false}\" class=\"th-inner\">{{column.label}}</div></th>\n" +
+    "					</tr>\n" +
+    "					<tr ng-show=\"isfixedHeader\" class=\"hidden-header smart-table-header-row\">\n" +
+    "							<th ng-repeat=\"column in columns\" scope=\"col\" class=\"smart-table-header-cell {{column.headerClass}}\" ><div ng-class=\"{'sort-ascent':column.reverse==true, 'sort-descent':column.reverse==false}\" class=\"th-inner\">{{column.label}}</div></th>\n" +
     "    </tr>\n" +
     "    </thead>\n" +
     "    <tbody>\n" +
@@ -60,6 +71,10 @@ angular.module("partials/smartTable.html", []).run(["$templateCache", function($
     "        <td ng-repeat=\"column in columns\" class=\"smart-table-data-cell {{column.cellClass}}\"></td>\n" +
     "    </tr>\n" +
     "    </tbody>\n" +
+    "			</table>\n" +
+    "		</div>\n" +
+    "	</div>\n" +
+    "	<table class=\"smart-table\" cellspacing=\"0\">\n" +
     "    <tfoot ng-show=\"isPaginationEnabled\">\n" +
     "    <tr class=\"smart-table-footer-row\">\n" +
     "        <td colspan=\"{{columns.length}}\">\n" +
@@ -68,7 +83,5 @@ angular.module("partials/smartTable.html", []).run(["$templateCache", function($
     "    </tr>\n" +
     "    </tfoot>\n" +
     "</table>\n" +
-    "\n" +
-    "\n" +
-    "");
+    "</div>");
 }]);

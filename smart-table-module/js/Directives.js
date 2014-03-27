@@ -88,6 +88,25 @@
                 }
             };
         })
+				//To call the callback on scroll
+				.directive('fixedTableContainerInner', function() {
+					return {
+						require: '^smartTable',
+						restrict: 'C',    
+						scope: true,
+						compile: function(tElement) {
+							tElement.append('<div class="there-is-more" ng-show="bottom">There is more...</div>');
+							return function(scope, element) {
+								var elm = element[0];								
+								element.bind('scroll', function() {
+									if(elm.offsetHeight + elm.scrollTop >= elm.scrollHeight){
+										scope.config.scrollCallBack();
+									}
+								});
+								}; // end of link 
+						}    
+					};
+				})
         //header cell with sorting functionality or put a checkbox if this column is a selection column
         .directive('smartTableHeaderCell',function () {
             return {

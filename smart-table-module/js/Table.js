@@ -12,6 +12,9 @@
             maxSize: 5,
             serverSideSort: false,
             serverSideFilter: false,
+			isfixedHeader: false,
+			height: 'auto',
+			scrollCallBack:function(){},
 
             //just to remind available option
             sortAlgorithm: '',

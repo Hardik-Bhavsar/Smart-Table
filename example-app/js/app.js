@@ -39,11 +39,16 @@ angular
         },
 
         globalConfig: {
-            isPaginationEnabled: false,
+            isPaginationEnabled: true,
             isGlobalSearchActivated: true,
-            serverSideFilter: true,
-            serverSideSort: true,
-            selectionMode: 'single'
+            serverSideFilter: false,
+            serverSideSort: false,
+			isfixedHeader: true,
+			height:'300px',
+            selectionMode: 'single',
+			scrollCallBack:function(){
+				console.log('at the end');
+			}
         }
 
     });

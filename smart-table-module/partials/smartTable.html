@@ -1,11 +1,22 @@
-<table class="smart-table">
+<div ng-class="{'smartTableContainer':isfixedHeader}">
+	<table class="smart-table" cellspacing="0">
     <thead>
     <tr class="smart-table-global-search-row" ng-show="isGlobalSearchActivated">
         <td class="smart-table-global-search" column-span="{{columns.length}}" colspan="{{columnSpan}}">
         </td>
     </tr>
+		<thead>
+	</table>
+	<div class="fixed-table-container" ng-style="{height:height,overflow:'auto'}">
+		<div class="header-background"> </div>
+		<div class="fixed-table-container-inner extrawrap">
+			<table class="smart-table" cellspacing="0">
+					<thead>
     <tr class="smart-table-header-row">
-        <th ng-repeat="column in columns" scope="col" class="smart-table-header-cell {{column.headerClass}}" ng-class="{'sort-ascent':column.reverse==true, 'sort-descent':column.reverse==false}">{{column.label}}</th>
+							<th ng-repeat="column in columns" scope="col" class="smart-table-header-cell {{column.headerClass}}" ><div ng-class="{'sort-ascent':column.reverse==true, 'sort-descent':column.reverse==false}" class="th-inner">{{column.label}}</div></th>
+					</tr>
+					<tr ng-show="isfixedHeader" class="hidden-header smart-table-header-row">
+							<th ng-repeat="column in columns" scope="col" class="smart-table-header-cell {{column.headerClass}}" ><div ng-class="{'sort-ascent':column.reverse==true, 'sort-descent':column.reverse==false}" class="th-inner">{{column.label}}</div></th>
     </tr>
     </thead>
     <tbody>
@@ -14,6 +25,10 @@
         <td ng-repeat="column in columns" class="smart-table-data-cell {{column.cellClass}}"></td>
     </tr>
     </tbody>
+			</table>
+		</div>
+	</div>
+	<table class="smart-table" cellspacing="0">
     <tfoot ng-show="isPaginationEnabled">
     <tr class="smart-table-footer-row">
         <td colspan="{{columns.length}}">
@@ -22,5 +37,4 @@
     </tr>
     </tfoot>
 </table>
-
-
+</div>

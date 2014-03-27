@@ -51,14 +51,68 @@
     text-align: center;
     cursor: pointer;
 }
-
-.smart-table th {
-    width: 120px;
-    padding: 0 20px;
-}
-
 .shuffle {
     float: right;
 }
-
-
+.smart-table{
+	width:100%;
+}
+/* styles required for fixed table */
+.smartTableContainer{
+	width:99%;
+	margin:auto;
+}
+.smartTableContainer .hidden-header .th-inner {
+		height: 0;
+		overflow-y: hidden;
+		padding-right: 5px;
+		position: static !important;
+		white-space: nowrap;
+}
+.smartTableContainer .smart-table td {
+	border-bottom: 1px solid #ccc;
+	padding: 5px;
+	text-align: left; /* IE */
+}
+.smartTableContainer .smart-table td + td {
+	border-left: 1px solid #ccc;
+}	
+.smartTableContainer .header-background {
+	border-bottom: 1px solid black;
+}
+.smartTableContainer .fixed-table-container {
+	width: 100%;
+	border: 1px solid black;
+	margin: 0px auto;
+	position: relative; /* could be absolute or relative */
+	padding-top: 30px; /* height of header */
+}
+.smartTableContainer .fixed-table-container-inner {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100%;
+}
+.smartTableContainer .header-background {
+	background-color: #226699;
+	height: 30px; /* height of header */
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+}
+.smartTableContainer table.smart-table {
+	width: 100%;
+}
+.smartTableContainer table.smart-table .th-inner {
+	position: absolute;
+	top: 0;
+	line-height: 30px; /* height of header */
+	text-align: left;
+	border-left: 1px solid black;
+	padding-left: 5px;
+	margin-left: -1px;
+}
+.smartTableContainer .smart-table th {
+	padding:0 !important;
+	border:none !important;
+}
